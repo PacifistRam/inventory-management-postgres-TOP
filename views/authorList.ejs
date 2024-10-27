@@ -1,0 +1,29 @@
+<%- include ("layout/_head.ejs",{ title:title }) %>
+    <h1>
+        <%= title %>
+    </h1>
+    <div>
+        <a href="/catalog/create-author">Add New Author</a>
+    </div>
+    <p>Following anime's are present in this Anime Section</p>
+
+    <% if (authorList.length) { %>
+     <ul>
+        <% authorList.forEach(author => { %>
+         <li><a href="<%= `author/${author.author_id}` %>"><%= author.author %></a></li>
+        <% }) %>
+     </ul>
+    <% } else { %>
+        <p>No Author data Found</p>
+    <%} %>
+
+   
+    
+    
+    
+
+
+
+
+
+<%- include ("layout/_footer.ejs") %>

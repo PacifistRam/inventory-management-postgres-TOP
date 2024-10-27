@@ -1,0 +1,14 @@
+
+<%- include ("layout/_head.ejs",{ title:title }) %>
+    <h1>Welcome to the Anime Catalog</h1>
+    <p>This Anime Catalog Contains Following: </p>
+    <ul>
+        <% if (totalCount) { %>
+         <% totalCount.forEach(element => { %>
+          <li><%= `Total  ${element.entity}'s: ${element.count}` %></li>
+         <% }) %>
+        <% } %>
+    </ul>
+    <br>
+    <a href="/catalog">Visit Anime Catalog</a>
+<%- include ("layout/_footer.ejs") %>

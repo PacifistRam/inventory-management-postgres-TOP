@@ -1,0 +1,31 @@
+<%- include ("layout/_head.ejs",{ title:title }) %>
+    <h1>
+        <%= title %>
+    </h1>
+    <% if (genreInfo.genreData[0]) { %>
+        <h2>
+            <%= genreInfo.genreData[0].genre %>
+        </h2>
+        <p><span>Description:</span>
+            <%= genreInfo.genreData[0].description %>
+        </p>
+        <% }else {%>
+            <p>No genre Data Found</p>
+            <%} %>
+
+    <% if (genreInfo.genreData[0]) { %>
+        <p>The following Anime's Are associated with <%= genreInfo.genreData[0].genre%> genre</p>
+    <% } %>
+    <% if (genreInfo.animeData.length) { %>
+     <ul>
+        <% genreInfo.animeData.forEach(anime => { %>
+         <li><a href="<%= `/catalog/anime/${anime.id}` %>"> <%= anime.anime %> </a></li>
+        <% }) %>
+     </ul>
+    <% } else{%>
+        <p>No anime's found in this Genre</p> 
+    <%} %>
+   
+
+
+ <%- include ("layout/_footer.ejs") %>

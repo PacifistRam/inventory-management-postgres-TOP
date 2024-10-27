@@ -1,0 +1,61 @@
+<%- include ("layout/_head.ejs",{ title:title }) %>
+    <h1>
+        <%= title %>
+    </h1>
+
+    <% if (!authorList.length) { %>
+    <p>No Author's Found</p> 
+    <P> Author's Need To be added first before adding new anime to the inventory</P>
+    <% } %>
+    <% if (!genreList.length) { %>
+    <p>No Genre's Found</p>   
+     <P> Genre's Need To be added first before adding new anime to the inventory</P>
+    <% } %>
+    
+    <% if (authorList.length && genreList.length) { %>
+        <% if (errors.length) { %>
+            <ul>
+                <% errors.forEach(error => { %>
+                    <% console.log(errors) %>
+                 <li> <%= `${error.msg} at ${error.path? error.path : ""}` %> </li>
+                <% }) %>
+            </ul>
+        <% } %>
+        <div class="form-wrapper">
+            <form action="" method="post">
+                <div class="field-group">
+                    <label for="animeName" id="animeNameLabel">Name:</label>
+                    <input type="text" name="animeName" id="animeName" required placeholder="anime name...">
+                </div>
+                <div class="field-group">
+                    <label for="animeDescription" id="animeDescriptionLabel">Description:</label>
+                    <textarea name="animeDescription" id="animeDescription" rows="5" cols="33" placeholder="Anime Description..." required></textarea>
+                </div>
+                <div class="field-group">
+                    <select name="authorId" id="author-select" required>
+                        <option value="">Select Author</option>
+                        <% authorList.forEach(author => { %>
+                         <option value=<%= author.author_id %>><%= author.author %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div class="field-group-checkbox">
+                    <% genreList.forEach(genre => { %>
+                     <div>
+                        <input type="checkbox" name="genre" value=<%= genre.id %> id="">
+                        <label for="genre"><%= genre.genre %></label>
+                     </div>
+                    <% }) %>
+                </div>
+                <button type="submit">Add Anime</button>
+            </form>
+        </div>
+    <% } %>
+    
+
+
+
+
+
+
+<%- include ("layout/_footer.ejs") %>

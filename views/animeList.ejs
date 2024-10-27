@@ -1,0 +1,27 @@
+<%- include ("layout/_head.ejs",{ title:title }) %>
+    <h1>
+        <%= title %>
+    </h1>
+    <div>
+        <a href="/catalog/create-anime">Add New Anime</a>
+    </div>
+    <p>Following anime's are present in this Anime Section</p>
+
+
+    <% if (animeList) { %>
+        <ul>
+            <% animeList.forEach(anime=> { %>
+                <li>
+                    <a href=<%=`anime/${anime.id}` %>><%= anime.anime %></a>
+                </li>
+                <% }) %>
+        </ul>
+        <% }else { %>
+            <p>No Anime's  Found</p>
+        <%}  %>
+
+
+
+
+
+<%- include ("layout/_footer.ejs") %>

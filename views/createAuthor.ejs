@@ -1,0 +1,32 @@
+<%- include ("layout/_head.ejs",{ title:title }) %>
+    <h1>
+        <%= title %>
+    </h1>
+
+        <% if (errors.length) { %>
+         <ul>
+            <% errors.forEach(error => { %>
+                <% console.log(errors) %>
+                <li> <%= `${error.msg} at ${error.path? error.path : ""}` %> </li>
+            <% }) %>
+         </ul>
+        <% } %>
+        <div class="form-wrapper">
+            <form action="" method="post">
+                <div class="field-group">
+                    <label for="authorName" id="authorNameLabel">Name:</label>
+                    <input type="text" name="authorName" id="authorName" required placeholder="author name...">
+                </div>
+                
+                <button type="submit">Add author</button>
+            </form>
+        </div>
+   
+    
+
+
+
+
+
+
+<%- include ("layout/_footer.ejs") %>

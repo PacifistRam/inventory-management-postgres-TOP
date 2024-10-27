@@ -1,0 +1,24 @@
+<%- include ("layout/_head.ejs",{ title:title }) %>
+    <h1>
+        <%= title %>
+    </h1>
+
+   <% if (authorInfo.authorData[0]) { %>
+    <p>Author: <%= authorInfo.authorData[0].author %></p>
+   <% } else { %>
+        <p>No Author Found</p>
+   <%} %>
+    <p>This Author is associated with following Anime's</p>
+    <% if (authorInfo.animeData.length) { %>
+     <ul>
+        <% authorInfo.animeData.forEach(anime => { %>
+         <li><a href=<%= `/catalog/anime/${anime.id}` %>><%= anime.anime %></a></li>
+        <% }) %>
+     </ul>
+    <% } else { %>
+        <p>No Data Found on anime</p>
+    <%} %>
+   
+
+
+    <%- include ("layout/_footer.ejs") %>

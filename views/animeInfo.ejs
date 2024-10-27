@@ -1,0 +1,30 @@
+<%- include ("layout/_head.ejs",{ title:title }) %>
+    <h1>
+        <%= title %>
+    </h1>
+    <% if (animeInfo[0]) { %>
+
+        <h2>
+            <%= animeInfo[0].anime %>
+        </h2>
+        <ul>
+            <li><span>Author:</span>
+                <%= animeInfo[0].author %>
+            </li>
+            <li><span>Summary:</span>
+                <%= animeInfo[0].summary %>
+            </li>
+            <li><span>Genre:</span>
+                <%= animeInfo[0].genre %>
+            </li>
+        </ul>
+        <button><a href="<%= `/catalog/anime/${animeInfo[0].animeid}/delete` %>">Delete Anime</a></button>
+        <% } else { %>
+            <p>No Anime Data found</p>
+        <% } %>
+
+
+
+
+
+            <%- include ("layout/_footer.ejs") %>
